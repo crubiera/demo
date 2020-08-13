@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script src="jspsych-6.1.0/jspsych.js"></script>
+      <script src="jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js"></script>
+      <script src="jspsych-6.1.0/plugins/jspsych-video-button-response.js"></script>
+      <script src="jspsych-6.1.0/plugins/jspsych-html-slider-response.js"></script>
+      <link href="jspsych-6.1.0/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+  </head>
+  <body></body>
+  <script>
+
+    var hello_trial = {
+        type: 'html-keyboard-response',
+        stimulus: 'Click any key to begin'
+    }
+
+    var video_button_trial = {
+        type: 'video-button-response',
+        sources: ['img/AuditoryBaVisualBa.mp4'],
+        choices: ['BA','DA'],
+        width: 650
+    }
+
+    var slider_trial = {
+        type: 'html-slider-response',
+        stimulus: '<p>Confidence</p>',
+        labels: ['not at all confident', 'very confident'],
+        prompt: "<p>How confident are you in your answer?</p>"
+    }
+
+    jsPsych.init({
+      timeline: [hello_trial, video_button_trial, slider_trial],
+      on_finish: function(){
+        jsPsych.data.displayData();
+      }
+    })
+
+    </script>
+</html>
