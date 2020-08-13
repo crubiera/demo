@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <script src="jspsych-6.1.0/jspsych.js"></script>
-      <script src="jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js"></script>
-      <script src="jspsych-6.1.0/plugins/jspsych-video-button-response.js"></script>
-      <script src="jspsych-6.1.0/plugins/jspsych-html-slider-response.js"></script>
-      <link href="jspsych-6.1.0/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+      <script src="crubiera.github.io/jsPsychSheet/jspsych-6.1.0/jspsych.js"></script>
+      <script src="crubiera.github.io/jsPsychSheet/jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js"></script>
+      <script src="crubiera.github.io/jsPsychSheet/jspsych-6.1.0/plugins/jspsych-video-button-response.js"></script>
+      <script src="crubiera.github.io/jsPsychSheet/jspsych-6.1.0/plugins/jspsych-html-slider-response.js"></script>
+      <link href="crubiera.github.io/jsPsychSheet/jspsych-6.1.0/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+  
+      <base target="_top">
+      <script src="https://crubiera.github.io/jsPsychSheet/jspsychsheet.js"></script>
+      <link rel="stylesheet" href="https://crubiera.github.io/jsPsychSheet/jspsychsheet.css">
   </head>
   <body></body>
   <script>
@@ -17,7 +21,7 @@
 
     var video_button_trial = {
         type: 'video-button-response',
-        sources: ['img/AuditoryBaVisualBa.mp4'],
+        sources: ['https://crubiera.github.io/jsPsychSheet/experiment/img/AuditoryBaVisualBa.mp4'],
         choices: ['BA','DA'],
         width: 650
     }
@@ -31,10 +35,11 @@
 
     jsPsych.init({
       timeline: [hello_trial, video_button_trial, slider_trial],
+      show_progress_bar: true,
       on_finish: function(){
-        jsPsych.data.displayData();
+          jsPsychSheet.uploadData(jsPsych.data.get().csv());
       }
-    })
+    });
 
     </script>
 </html>
